@@ -5,11 +5,11 @@ class Z_CL_GETHTTP definition
 
 public section.
 
-  class-methods GET_HTTP
+  methods GET_HTTP
     importing
-      !HTTP_URL type /IWFND/SUB_BASE_URL
+      !HTTP_URL type STRING optional
     returning
-      value(TEXT) type /IWFND/MED_MDL_DEFAULT_VALUE .
+      value(TEXT) type STRING .
 protected section.
 private section.
 ENDCLASS.

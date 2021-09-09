@@ -3,15 +3,22 @@
  <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
   <asx:values>
    <VSEOCLASS>
-    <CLSNAME>Z_CL_GETHTTP</CLSNAME>
+    <CLSNAME>Z_CL_CONVERTJSON</CLSNAME>
     <LANGU>E</LANGU>
-    <DESCRIPT>Class to get text by http</DESCRIPT>
+    <DESCRIPT>Convert json to the table</DESCRIPT>
     <STATE>1</STATE>
     <CLSCCINCL>X</CLSCCINCL>
     <FIXPT>X</FIXPT>
     <UNICODE>X</UNICODE>
-    <MSG_ID>00</MSG_ID>
    </VSEOCLASS>
+   <DESCRIPTIONS>
+    <SEOCOMPOTX>
+     <CLSNAME>Z_CL_CONVERTJSON</CLSNAME>
+     <CMPNAME>CONVERTJSON</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Convert json to table and use some filters</DESCRIPT>
+    </SEOCOMPOTX>
+   </DESCRIPTIONS>
   </asx:values>
  </asx:abap>
 </abapGit>
