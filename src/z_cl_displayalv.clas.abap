@@ -31,7 +31,7 @@ CLASS Z_CL_DISPLAYALV IMPLEMENTATION.
     catch cx_salv_msg into lx_msg.
   endtry.
 
-  o_alv->get_columns( )->get_column( 'R030' )->set_visible( if_salv_c_bool_sap=>false ).
+
   o_alv->get_functions( )->set_default( abap_true ).
   o_alv->set_screen_status(
       pfstatus      =  'SALV_STANDARD'

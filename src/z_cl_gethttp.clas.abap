@@ -59,8 +59,11 @@ CLASS Z_CL_GETHTTP IMPLEMENTATION.
   ).
 
   if sy-subrc ne 0.
-    data(lv_err_string) = value string( ).
-    data(lv_ret_code) = value sy-subrc( ).
+    data lv_err_string type string.
+    data lv_ret_code type sy-subrc.
+
+*    data(lv_err_string) = value string( ).
+*    data(lv_ret_code) = value sy-subrc( ).
     lo_http_client->response->get_status(
       importing
         code   = lv_ret_code

@@ -11,14 +11,6 @@
     <FIXPT>X</FIXPT>
     <UNICODE>X</UNICODE>
    </VSEOCLASS>
-   <DESCRIPTIONS>
-    <SEOCOMPOTX>
-     <CLSNAME>Z_CL_CONVERTJSON</CLSNAME>
-     <CMPNAME>CONVERTJSON</CMPNAME>
-     <LANGU>E</LANGU>
-     <DESCRIPT>Convert json to table and use some filters</DESCRIPT>
-    </SEOCOMPOTX>
-   </DESCRIPTIONS>
   </asx:values>
  </asx:abap>
 </abapGit>
