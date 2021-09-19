@@ -16,27 +16,27 @@ class lcl_app implementation.
     data lr_url type string.
     data: lv_now      type d,
           lv_date(10),
-          new_date    type char10,
-          day(2),
-          month(2),
-          year(4).
+          lnew_date    type char10,
+          lday(2),
+          lmonth(2),
+          lyear(4).
 
     if not i_date = 00000000.
       write i_date to lv_date.
-      day(2) = lv_date(2).
-      month(2) = lv_date+3(2).
-      year(4) = lv_date+6(4).
-      new_date = |{ year }| && |{ month }| && |{ day }|.
+      lday(2) = lv_date(2).
+      lmonth(2) = lv_date+3(2).
+      lyear(4) = lv_date+6(4).
+      lnew_date = |{ lyear }| && |{ lmonth }| && |{ lday }|.
     else.
       lv_now = sy-datum.
       write lv_now to lv_date.
-      day(2) = lv_date(2).
-      month(2) = lv_date+3(2).
-      year(4) = lv_date+6(4).
-      new_date = |{ year }| && |{ month }| && |{ day }|.
+      lday(2) = lv_date(2).
+      lmonth(2) = lv_date+3(2).
+      lyear(4) = lv_date+6(4).
+      lnew_date = |{ lyear }| && |{ lmonth }| && |{ lday }|.
     endif.
 
-    lr_url = |https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?date={ new_date }&json|.
+    lr_url = |https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?date={ lnew_date }&json|.
 
     data lo_httptext type ref to z_cl_gethttp.
     CREATE OBJECT lo_httptext.
