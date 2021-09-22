@@ -1,22 +1,22 @@
-class Z_CL_DISPLAYALV definition
+class ZCL_CUR_DISPLAY_TABLE definition
   public
   final
   create public .
 
-  public section.
+public section.
 
-    data LT_JSON type ZCURRTABTYPE .
+  data LT_JSON type ZCURRTABTYPE .
 
-    methods DISPLAY
-      importing
-        value(i_jsontable) type ZCURRTABTYPE .
+  methods DISPLAY
+    importing
+      value(I_JSONTABLE) type ZCURRTABTYPE .
   protected section.
   private section.
 ENDCLASS.
 
 
 
-CLASS Z_CL_DISPLAYALV IMPLEMENTATION.
+CLASS ZCL_CUR_DISPLAY_TABLE IMPLEMENTATION.
 
 
   method DISPLAY.
@@ -33,9 +33,9 @@ CLASS Z_CL_DISPLAYALV IMPLEMENTATION.
 
     o_alv->get_functions( )->set_default( abap_true ).
     o_alv->set_screen_status(
-        pfstatus      =  'SALV_STANDARD'
-        report        =  'SALV_DEMO_TABLE_SELECTIONS'
-        set_functions = o_alv->c_functions_all ).
+      pfstatus      =  'SALV_STANDARD'
+      report        =  'SALV_DEMO_TABLE_SELECTIONS'
+      set_functions = o_alv->c_functions_all ).
 
     o_alv->display( ).
   endmethod.

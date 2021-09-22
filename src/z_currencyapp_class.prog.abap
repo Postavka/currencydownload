@@ -36,25 +36,35 @@ class lcl_app implementation.
       lnew_date = |{ lyear }| && |{ lmonth }| && |{ lday }|.
     endif.
 
-    lr_url = |https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?date={ lnew_date }&json|.
+    lr_url = |https://bank.gov.ua/nbustatservice/v1/statdirectory/exchange?date={ lnew_date }&json|.
 
-    data lo_httptext type ref to z_cl_gethttp.
-    CREATE OBJECT lo_httptext.
-    data lo_newjsn type ref to z_cl_convertjson.
-    CREATE OBJECT lo_newjsn.
-    data lo_newalv type ref to z_cl_displayalv.
-    CREATE OBJECT lo_newalv.
+    data lo_httptext type ref to zcl_cur_rate_downloader.
+    create object lo_httptext.
+    data lo_ratetable type ref to zcl_cur_ratetable_creator.
+    create object lo_ratetable.
+    data lo_alv type ref to zcl_cur_display_table.
+    create object lo_alv.
     data lv_response type string.
-    data lt_newjson type ZCURRTABTYPE.
+    data lt_ratetable type zcurrtabtype.
 
-    lv_response = lo_httptext->get_http( lr_url ).
+    data lx type ref to zcx_currency_error.
 
-    lt_newjson = lo_newjsn->convertjson(
-       iv_JSONTEXT = lv_response
-       IV_RANGE = ir_cur ).
+    try.
+      lv_response = lo_httptext->get_by_url( lr_url ).
+    catch zcx_currency_error into lx.
+      message lx->msg type 'e'.
+    endtry.
+
+    try.
+    lt_ratetable = lo_ratetable->create_table(
+      iv_jsontext = lv_response
+      iv_range = ir_cur ).
+    catch zcx_currency_error into lx.
+      message lx->msg type 'e'.
+    endtry.
 
 
-    lo_newalv->display( lt_newjson ).
+    lo_alv->display( lt_ratetable ).
   endmethod.
 
 endclass.
